@@ -199,3 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7c645550a4c4601908f005cbd89a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  prefabBoxCollider2D: {fileID: 87575415893009631}
+  doorBoxCollider2D: {fileID: -4098041398572957660, guid: 34494f81098884c4bb03a2ba38a9ceb8, type: 3}
+  door: {fileID: 3226097288731060531, guid: 34494f81098884c4bb03a2ba38a9ceb8, type: 3}
+  prefabPlayer: {fileID: 6421967029277610295}
+  doorGameObj: {fileID: 6616673330063448111, guid: 34494f81098884c4bb03a2ba38a9ceb8, type: 3}

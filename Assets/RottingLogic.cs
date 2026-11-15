@@ -4,8 +4,11 @@ using UnityEngine;
 public class RottingLogic : MonoBehaviour
 {
     private void OnMouseDown()
-    {
-        new WaitForSeconds(1f);
-        Destroy(gameObject);
-    }
+            {
+                
+                Destroy(gameObject,0.5f);
+                
+                
+            }
+    
 }
