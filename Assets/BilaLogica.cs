@@ -9,7 +9,9 @@ public class LogicaMovement : MonoBehaviour
     [SerializeField] private BoxCollider2D ColiziuneLava;
     [SerializeField] private CircleCollider2D playerCollider;
     [SerializeField] private GameObject prefabPlayer;
-
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private GameObject successScreen;
     [SerializeField] private float upForceSpeed = 9f;
     [SerializeField] private float jumpSpeed = 5f;
     [SerializeField] private float waitDuration = 0.5f;
@@ -83,6 +85,7 @@ public class LogicaMovement : MonoBehaviour
         {
             if (isGrounded || isTouchingDeadPrefab)
             {
+                PlayJumpSound();
                 CancelWait();
                 player.AddForce(Vector2.up * upForceSpeed, ForceMode2D.Impulse);
             }
@@ -93,6 +96,7 @@ public class LogicaMovement : MonoBehaviour
         {
             if (isGrounded || isTouchingDeadPrefab)
             {
+                PlayJumpSound();
                 CancelWait();
                 Vector2 dir = new Vector2(1f, 1f);
                 player.linearVelocity = dir * jumpSpeed;
@@ -105,6 +109,7 @@ public class LogicaMovement : MonoBehaviour
         {
             if (isGrounded || isTouchingDeadPrefab)
             {
+                PlayJumpSound();
                 CancelWait();
                 Vector2 dir = new Vector2(-1f, 1f);
                 player.linearVelocity = dir * jumpSpeed;
@@ -156,5 +161,28 @@ public class LogicaMovement : MonoBehaviour
         player.transform.position = currentSpawnPosition;
         player.position = currentSpawnPosition;
         Physics2D.SyncTransforms();
+    }
+    void PlayJumpSound()
+    {
+        if (audioSource != null && jumpSound != null)
+        {
+            audioSource.PlayOneShot(jumpSound);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+      
+
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            if (successScreen != null) {
+                    successScreen.SetActive(true);
+            }
+
+            Time.timeScale = 0f;
+            
+            
+        }
     }
 }
